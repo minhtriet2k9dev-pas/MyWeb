@@ -56,7 +56,7 @@ io.on('connection',(socket) => {
     var time = new Date();
     socket.on('new-user',(data) => {
         //console.log('User connected at',time.getHours()+':'+time.getMinutes()+':'+time.getSeconds(),`with name: "${name}"`);
-        fs.appendFile(__dirname+"/info.log",'connectedTime : "'+time.getHours()+':'+time.getMinutes()+':'+time.getSeconds()+`",name: "${data.name}" , ip: "${data.ip}"\n`,  function(err) {
+        fs.appendFile(__dirname+"/info.log",'{connectedTime : "'+time.getHours()+':'+time.getMinutes()+':'+time.getSeconds()+`",name: "${data.name}"}\n`,  function(err) {
             if(err) {
                 console.log(err);
             }
