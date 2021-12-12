@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title style="font-size: 10px">Secret chat app</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css">  
+    <style>
+    </style>
+</head>
+
+<body>
+    <p id="title">Secret chat app</p>
+
+    <div id="messages" >
+
+    </div>
+
+    <form id="chatform">
+        <input class="feature" type="text" id="message" placeholder="Enter your message">
+        <button id="send">Send</button>
+    </form>
+
+    <script  src="/socket.io/socket.io.js"></script>
+    <script src="./script.js">
+
+    </script>
+</body>
+
+</html>

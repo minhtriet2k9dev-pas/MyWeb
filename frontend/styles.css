@@ -1,0 +1,44 @@
+@charset "UTF-8";
+html{
+    font-family: 'Roboto', sans-serif;
+}
+
+#title {
+    font-size: 30px;
+    color:#ef7b4d ;
+    text-align: center;
+    font-weight: bold;
+    margin: 40px 0 30px;
+}
+
+.feature {
+    font-size: 18px;
+    width: 85%;
+    margin-left: 5%;
+}
+
+#chatform {
+    position: static;
+    padding-top: 65em;
+}
+
+.featurelabel{
+    font-size: 18px;
+    right: 10px;
+    margin-right: 10px;
+}
+
+#send{
+    font-size: 20px;
+    background-color: #b9f9db;
+}
+
+#messages{
+    margin-top: 10px;
+    margin-left: 2.5%;
+    position: fixed;
+    overflow: scroll;
+    left: 7%;
+    max-height: 81%;
+    width: 80%;
+}
