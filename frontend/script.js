@@ -1,5 +1,4 @@
 const socket = io();
-
 var name;
 function getName() {
     name = prompt("Enter your name: ");
@@ -12,11 +11,14 @@ function getName() {
         getName();
     }
 }
-getName();
 
-socket.emit('new-user', {
-    name: name
-});
+var time = new Date();
+getName();
+const login = {
+    name: name,
+    time: time.getDate()+'/'+time.getMonth()+'/'+time.getFullYear()+'  '+time.getHours()+':'+time.getHours()+':'+time.getMinutes()+':'+time.getSeconds()
+}
+socket.emit('new-user', login);
 const chatMes = document.querySelector('#message');
 const chatForm = document.querySelector('#chatform');
 function displayAccountName(){
@@ -35,12 +37,14 @@ chatForm.addEventListener('submit', (e) => {
         alert("You can't use \"");
         return;
     }
-    socket.emit('on-chat', {
+    const chat = {
         name: name,
         message: message,
         time: time,
         fullTime: fullTime
-    });
+    };
+    socket.emit('on-chat',chat);
+    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
     chatMes.value = '';
 })
 const messages = document.querySelector('#messages');
