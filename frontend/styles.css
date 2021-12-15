@@ -1,11 +1,11 @@
 @charset "UTF-8";
-html{
+html {
     font-family: 'Roboto', sans-serif;
 }
 
 #title {
     font-size: 35px;
-    color:#ef7b4d ;
+    color: #ef7b4d;
     text-align: center;
     font-weight: bold;
     margin: 40px 0 30px;
@@ -22,18 +22,18 @@ html{
     padding-top: 65em;
 }
 
-.featurelabel{
+.featurelabel {
     font-size: 18px;
     right: 10px;
     margin-right: 10px;
 }
 
-#send{
+#send {
     font-size: 20px;
     background-color: #b9f9db;
 }
 
-#messages{
+#messages {
     margin-top: 10px;
     margin-left: 2.5%;
     position: fixed;

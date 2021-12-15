@@ -6,6 +6,10 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { "Content-Type": "text/css" });
             res.write(fs.readFileSync(path.join(__dirname, '..', 'frontend', 'styles.css')));
             break;
+        case "/emoji.js":
+            res.writeHead(200, { "Content-Type": "text/javascript" });
+            res.write(fs.readFileSync(path.join(__dirname, '..', 'frontend', 'emoji.js')));
+            break;
         case "/script.js":
             res.writeHead(200, { "Content-Type": "text/javascript" });
             res.write(fs.readFileSync(path.join(__dirname, '..', 'frontend', 'script.js')));
@@ -13,6 +17,7 @@ const server = http.createServer((req, res) => {
         default:
             res.writeHead(200, { "Content-Type": "text/html" });
             res.write(fs.readFileSync(path.join(__dirname, '..', 'frontend', 'index.html')));
+            break;
     }
     res.end();
     //res.sendFile();

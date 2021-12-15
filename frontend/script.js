@@ -1,4 +1,6 @@
 const socket = io();
+import replaceEmoji from "./emoji.js";
+
 var name;
 
 function getName() {
@@ -15,26 +17,33 @@ function getName() {
 
 var time = new Date();
 getName();
-login = {
+const login = {
     name: name,
     time: time.getDate() + '/' + time.getMonth() + '/' + time.getFullYear() + '  ' + time.getHours() + ':' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds()
 };
+
 socket.emit('new-user', login);
-chatMes = document.querySelector('#message');
-chatForm = document.querySelector('#chatform');
+var chatMes = document.querySelector('#message');
+var chatForm = document.querySelector('#chatform');
 
 function displayAccountName() {
     var account = document.querySelector('#title');
     account.setAttribute('style', 'white-space: pre;');
     account.textContent = `${name}`;
 }
+
 displayAccountName();
+
 chatForm.addEventListener('submit', (e) => {
     var now = new Date();
     e.preventDefault();
+    //const chatMes = document.querySelector('#message');
+    var message = "";
     var fullTime = now.getDate() + '/' + now.getMonth() + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
     time = now.getHours() + ':' + now.getMinutes();
     message = chatMes.value;
+    chatMes.value = '';
+    //alert(message);
     if (message == "\"") {
         alert("You can't use \"");
         return;
@@ -47,14 +56,16 @@ chatForm.addEventListener('submit', (e) => {
     };
     socket.emit('on-chat', chat);
     localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
-    chatMes.value = '';
 });
-messages = document.querySelector('#messages');
+
+var messages = document.querySelector('#messages');
+
 socket.on('user-chat', (data) => {
+    //alert("bruh");
     if (data.message == '') {
         return;
     }
-    chatLabel = document.createElement('i');
+    var chatLabel = document.createElement('i');
     if (data.name == name) {
         chatLabel.textContent = `Me\r\n`;
         chatLabel.setAttribute('style', 'white-space: pre; font-weight: bold; font-size: 14px; color: #ff2354; padding-right: 15px; margin-top: 7px;');
@@ -62,7 +73,7 @@ socket.on('user-chat', (data) => {
         chatLabel.textContent = `${data.name}\r\n`;
         chatLabel.setAttribute('style', 'white-space: pre; font-weight: bold; font-size: 14px; color: #06f; padding-left: 15px; margin-top: 7px;');
     }
-    chatMsg = document.createElement('label');
+    var chatMsg = document.createElement('label');
     if (data.name == name) {
         chatMsg.setAttribute('style', 'font-size: 20px; padding-right: 30px; white-space: pre; margin-top: 7px;');
     } else {
@@ -78,7 +89,7 @@ socket.on('user-chat', (data) => {
     }
     chatTime.textContent = `${data.time} `;
 
-    chatItem = document.createElement('div');
+    var chatItem = document.createElement('div');
     if (data.name == name) {
         chatItem.setAttribute('style', 'text-align: right; padding-bottom: 10px;');
     }
@@ -88,14 +99,12 @@ socket.on('user-chat', (data) => {
     messages.appendChild(document.createElement('br'));
     messages.appendChild(chatItem);
 });
+
 window.setInterval(function() {
     var elem = document.getElementById('messages');
     elem.scrollTop = elem.scrollHeight;
 }, 1);
+
 window.onscroll = function(ev) {
     document.getElementById("message").focus();
 };
-
-if ('a' === 'a') {
-    alert("bruh");
-}
