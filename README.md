@@ -12,4 +12,4 @@
 
 ## UPDATE
 
-#### thí will allow you to send some icons
+#### this will allow you to send some icons
