@@ -42,6 +42,7 @@ chatForm.addEventListener('submit', (e) => {
     var fullTime = now.getDate() + '/' + now.getMonth() + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
     time = now.getHours() + ':' + now.getMinutes();
     message = chatMes.value;
+    message = replaceEmoji(message);
     chatMes.value = '';
     //alert(message);
     if (message == "\"") {
@@ -55,7 +56,6 @@ chatForm.addEventListener('submit', (e) => {
         fullTime: fullTime
     };
     socket.emit('on-chat', chat);
-    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
 });
 
 var messages = document.querySelector('#messages');
