@@ -48,7 +48,7 @@ chatForm.addEventListener('submit', (e) => {
         alert("You can't use \"");
         return;
     }
-    chat = {
+    const chat = {
         name: name,
         message: message,
         time: time,
