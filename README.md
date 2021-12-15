@@ -1,6 +1,10 @@
 # MyWeb
 
-### remember: install socket.io :)
+## fist of all run "npm i" for install necessary packages
+
+## use "yarn start" to start server if you've already have yarn installed
+
+## otherwise just "node backend/index.js"
 
 ## something need to know about
 
@@ -8,4 +12,4 @@
 
 ## UPDATE
 
-#### thí will allow you to sen icon:)
+#### thí will allow you to send some icons
