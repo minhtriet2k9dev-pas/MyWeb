@@ -1,7 +1,7 @@
 const socket = io();
 import replaceEmoji from "./emoji.js";
 
-var name;
+var name = "";
 
 function getName() {
     name = prompt("Enter your name: ");
@@ -81,7 +81,7 @@ socket.on('user-chat', (data) => {
     }
     chatMsg.textContent = `${data.message}\r\n`;
 
-    chatTime = document.createElement('label');
+    var chatTime = document.createElement('label');
     if (data.name == name) {
         chatTime.setAttribute('style', 'font-size: 13px; padding-right: 15px; white-space: pre; margin-top: 7px;');
     } else {
