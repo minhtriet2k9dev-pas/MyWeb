@@ -8,6 +8,10 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { "Content-Type": "text/css" });
             res.write(fs.readFileSync(path.join(__dirname, '..', 'frontend', 'styles.css')));
             break;
+        case "/emoji.rule":
+            res.writeHead(200, { "Content-Type": "text/plain" });
+            res.write(fs.readFileSync(path.join(__dirname, '..', 'docs', 'emoji.rule')));
+            break;
         case "/emoji.js":
             res.writeHead(200, { "Content-Type": "text/javascript" });
             res.write(fs.readFileSync(path.join(__dirname, '..', 'frontend', 'emoji.js')));
@@ -45,19 +49,6 @@ if (!fs.existsSync('/info.log')) {
         }
     })
 }
-// function getChatLog(){
-//     fs.readFile(__dirname + '/chat.log','utf-8', function(err,data){
-//         if (!err) {
-//             return data;
-//         } else {
-//             console.log(err);
-//         }
-//     });
-// }
-
-// var chatLog = getChatLog();
-// console.log(chatLog);
-// io.emit('chat-log',chatLog);
 
 io.on('connection', (socket) => {
     //var time = new Date();

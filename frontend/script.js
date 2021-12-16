@@ -98,13 +98,8 @@ socket.on('user-chat', (data) => {
     chatItem.appendChild(chatTime);
     messages.appendChild(document.createElement('br'));
     messages.appendChild(chatItem);
+    var elem = document.getElementById("messages");
+    elem.scrollTop = elem.scrollHeight - elem.clientHeight;
 });
 
-window.setInterval(function() {
-    var elem = document.getElementById('messages');
-    elem.scrollTop = elem.scrollHeight;
-}, 1);
-
-window.onscroll = function(ev) {
-    document.getElementById("message").focus();
-};
+document.getElementById("message").focus();
