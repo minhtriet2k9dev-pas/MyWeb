@@ -106,3 +106,8 @@ socket.on('user-chat', (data) => {
 });
 
 document.getElementById("message").focus();
+
+console.log("bruh");
+
+
+khdjhfjhfjhdjfhdjfhjhjdhjf
