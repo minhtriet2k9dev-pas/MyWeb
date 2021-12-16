@@ -268,7 +268,6 @@ function replaceEmoji(msg) {
     ret = ret.replaceAll(":biohazard:", "\u{2623}");
     ret = ret.replaceAll(":mobile_phone_off:", "\u{1F4F4}");
     ret = ret.replaceAll(":vibration_mode:", "\u{1F4F3}");
-    ret = ret.replaceAll(":eight_pointed_black_star:", "\u{2734}");
     ret = ret.replaceAll(":vs:", "\u{1F19A}");
     ret = ret.replaceAll(":accept:", "\u{1F251}");
     ret = ret.replaceAll(":white_flower:", "\u{1F4AE}");
@@ -284,7 +283,16 @@ function replaceEmoji(msg) {
     ret = ret.replaceAll(":cl:", "\u{1F191}");
     ret = ret.replaceAll(":o2:", "\u{1F17E}");
     ret = ret.replaceAll(":sos:", "\u{1F198}");
-    ret = ret.replaceAll(":mobile_phone_off:", "\u{1F4F4}");
+    ret = ret.replaceAll(":vs:", "\u{1F19A}");
+    ret = ret.replaceAll(":accept:", "\u{1F251}");
+    ret = ret.replaceAll(":white_flower:", "\u{1F4AE}");
+    ret = ret.replaceAll(":ideograph_advantage:", "\u{1F250}");
+    ret = ret.replaceAll(":secret:", "\u{3299}");
+    ret = ret.replaceAll(":congratulations:", "\u{3297}");
+    ret = ret.replaceAll(":u6e80:", "\u{1F237}");
+    ret = ret.replaceAll(":u5408:", "\u{1F234}");
+    ret = ret.replaceAll(":u7981:", "\u{1F238}");
+    ret = ret.replaceAll(":eight_pointed_black_star:", "\u{2734}");
 
     return ret;
 }

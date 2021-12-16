@@ -1,7 +1,7 @@
 const socket = io();
-//import replaceEmoji from "./emoji.js";
 
 var name = "";
+var thisUserSent = false;
 
 function getName() {
     name = prompt("Enter your name: ");
@@ -35,6 +35,7 @@ function displayAccountName() {
 displayAccountName();
 
 chatForm.addEventListener('submit', (e) => {
+    thisUserSent = true;
     var now = new Date();
     e.preventDefault();
     //const chatMes = document.querySelector('#message');
@@ -66,7 +67,7 @@ socket.on('user-chat', (data) => {
         return;
     }
     var chatLabel = document.createElement('i');
-    if (data.name == name) {
+    if (data.name == name && thisUserSent) {
         chatLabel.textContent = `Me\r\n`;
         chatLabel.setAttribute('style', 'white-space: pre; font-weight: bold; font-size: 14px; color: #ff2354; padding-right: 15px; margin-top: 7px;');
     } else {
@@ -74,7 +75,7 @@ socket.on('user-chat', (data) => {
         chatLabel.setAttribute('style', 'white-space: pre; font-weight: bold; font-size: 14px; color: #06f; padding-left: 15px; margin-top: 7px;');
     }
     var chatMsg = document.createElement('label');
-    if (data.name == name) {
+    if (data.name == name && thisUserSent) {
         chatMsg.setAttribute('style', 'font-size: 20px; padding-right: 30px; white-space: pre; margin-top: 7px;');
     } else {
         chatMsg.setAttribute('style', 'font-size: 20px; padding-left: 30px; white-space: pre; margin-top: 7px;');
@@ -82,7 +83,7 @@ socket.on('user-chat', (data) => {
     chatMsg.textContent = `${data.message}\r\n`;
 
     var chatTime = document.createElement('label');
-    if (data.name == name) {
+    if (data.name == name && thisUserSent) {
         chatTime.setAttribute('style', 'font-size: 13px; padding-right: 15px; white-space: pre; margin-top: 7px;');
     } else {
         chatTime.setAttribute('style', 'font-size: 13px; padding-left: 15px; white-space: pre; margin-top: 7px;');
@@ -90,8 +91,10 @@ socket.on('user-chat', (data) => {
     chatTime.textContent = `${data.time} `;
 
     var chatItem = document.createElement('div');
-    if (data.name == name) {
+    if (data.name == name && thisUserSent) {
         chatItem.setAttribute('style', 'text-align: right; padding-bottom: 10px;');
+    } else {
+        // chatItem.setAttribute('style', 'text-align: left; padding-bottom: 10px;');
     }
     chatItem.appendChild(chatLabel);
     chatItem.appendChild(chatMsg);
