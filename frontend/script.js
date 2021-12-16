@@ -1,5 +1,5 @@
 const socket = io();
-import replaceEmoji from "./emoji.js";
+//import replaceEmoji from "./emoji.js";
 
 var name = "";
 
@@ -42,14 +42,14 @@ chatForm.addEventListener('submit', (e) => {
     var fullTime = now.getDate() + '/' + now.getMonth() + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
     time = now.getHours() + ':' + now.getMinutes();
     message = chatMes.value;
-    message = replaceEmoji(message);
+    //message = replaceEmoji(message);
     chatMes.value = '';
     //alert(message);
     if (message == "\"") {
         alert("You can't use \"");
         return;
     }
-    const chat = {
+    var chat = {
         name: name,
         message: message,
         time: time,

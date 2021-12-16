@@ -1,5 +1,7 @@
 const path = require('path');
 const http = require('http');
+const emoji = require(path.join(__dirname, '..', 'frontend', 'emoji.js'));
+
 const server = http.createServer((req, res) => {
     switch (req.url) {
         case "/styles.css":
@@ -68,6 +70,7 @@ io.on('connection', (socket) => {
         });
     });
     socket.on('on-chat', (message) => {
+        message.message = emoji.replaceEmoji(message.message);
         io.emit('user-chat', message);
         fs.appendFile(__dirname + "/chat.log", JSON.stringify(message) + '\n', function(err) {
             if (err) {
