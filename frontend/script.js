@@ -36,8 +36,8 @@ const login = {
 };
 
 socket.emit("new-user", login);
-var chatMes = document.querySelector("#message");
-var chatForm = document.querySelector("#chatform");
+const chatMes = document.querySelector("#message");
+const chatForm = document.querySelector("#chatform");
 
 function displayAccountName() {
 	var account = document.querySelector("#title");
@@ -49,11 +49,11 @@ displayAccountName();
 
 chatForm.addEventListener("submit", (e) => {
 	thisUserSent = true;
-	var now = new Date();
+	const now = new Date();
 	e.preventDefault();
 	//const chatMes = document.querySelector('#message');
 	var message = "";
-	var fullTime =
+	const fullTime =
 		now.getDate() +
 		"/" +
 		now.getMonth() +
@@ -74,7 +74,7 @@ chatForm.addEventListener("submit", (e) => {
 		alert("You can't use \"");
 		return;
 	}
-	var chat = {
+	const chat = {
 		name: name,
 		message: message,
 		time: time,
@@ -91,7 +91,7 @@ socket.on("user-chat", (data) => {
 		return;
 	}
 	var chatLabel = document.createElement("i");
-	if (data.name == name && thisUserSent) {
+	if (thisUserSent) {
 		chatLabel.textContent = `Me\r\n`;
 		chatLabel.setAttribute(
 			"style",
@@ -107,7 +107,7 @@ socket.on("user-chat", (data) => {
 	// TODO : add time
 	// FIXME : add time
 	var chatMsg = document.createElement("label");
-	if (data.name == name && thisUserSent) {
+	if (thisUserSent) {
 		chatMsg.setAttribute(
 			"style",
 			"font-size: 20px; padding-right: 30px; white-space: pre; margin-top: 7px;"
@@ -121,7 +121,7 @@ socket.on("user-chat", (data) => {
 	chatMsg.textContent = `${data.message}\r\n`;
 
 	var chatTime = document.createElement("label");
-	if (data.name == name && thisUserSent) {
+	if (thisUserSent) {
 		chatTime.setAttribute(
 			"style",
 			"font-size: 13px; padding-right: 15px; white-space: pre; margin-top: 7px;"
@@ -135,7 +135,7 @@ socket.on("user-chat", (data) => {
 	chatTime.textContent = `${data.time} `;
 
 	var chatItem = document.createElement("div");
-	if (data.name == name && thisUserSent) {
+	if (thisUserSent) {
 		chatItem.setAttribute(
 			"style",
 			"text-align: right; padding-bottom: 10px;"
