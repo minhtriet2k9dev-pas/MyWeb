@@ -1,21 +1,21 @@
 const socket = io();
 
-var name = "";
-var thisUserSent = false;
+let name = "";
+let thisUserSent = false;
 
 function getName() {
 	name = prompt("Enter your name: ");
-	if (name == null || name == "") {
+	if (name === "") {
 		alert("Please enter a valid name");
 		getName();
 	}
-	if (name == '"') {
+	if (name === '"') {
 		alert("Invalid name");
 		getName();
 	}
 }
 
-var time = new Date();
+let time = new Date();
 getName();
 const login = {
 	name: name,
@@ -40,7 +40,7 @@ const chatMes = document.querySelector("#message");
 const chatForm = document.querySelector("#chatform");
 
 function displayAccountName() {
-	var account = document.querySelector("#title");
+	let account = document.querySelector("#title");
 	account.setAttribute("style", "white-space: pre;");
 	account.textContent = `${name}`;
 }
@@ -52,7 +52,7 @@ chatForm.addEventListener("submit", (e) => {
 	const now = new Date();
 	e.preventDefault();
 	//const chatMes = document.querySelector('#message');
-	var message = "";
+	let message = chatMes.value;
 	const fullTime =
 		now.getDate() +
 		"/" +
@@ -66,11 +66,10 @@ chatForm.addEventListener("submit", (e) => {
 		":" +
 		now.getSeconds();
 	time = now.getHours() + ":" + now.getMinutes();
-	message = chatMes.value;
 	//message = replaceEmoji(message);
 	chatMes.value = "";
 
-	if (message == '"') {
+	if (message === '"') {
 		alert("You can't use \"");
 		return;
 	}
@@ -83,14 +82,14 @@ chatForm.addEventListener("submit", (e) => {
 	socket.emit("on-chat", chat);
 });
 
-var messages = document.querySelector("#messages");
+let messages = document.querySelector("#messages");
 
 socket.on("user-chat", (data) => {
 	//alert("bruh");
-	if (data.message == "") {
+	if (data.message === "") {
 		return;
 	}
-	var chatLabel = document.createElement("i");
+	let chatLabel = document.createElement("i");
 	if (thisUserSent) {
 		chatLabel.textContent = `Me\r\n`;
 		chatLabel.setAttribute(
@@ -106,7 +105,7 @@ socket.on("user-chat", (data) => {
 	}
 	// TODO : add time
 	// FIXME : add time
-	var chatMsg = document.createElement("label");
+	let chatMsg = document.createElement("label");
 	if (thisUserSent) {
 		chatMsg.setAttribute(
 			"style",
@@ -118,9 +117,9 @@ socket.on("user-chat", (data) => {
 			"font-size: 20px; padding-left: 30px; white-space: pre; margin-top: 7px;"
 		);
 	}
-	chatMsg.textContent = `${data.message}\r\n`;
+	chatMsg.innerHTML = `${data.message}\r\n`;
 
-	var chatTime = document.createElement("label");
+	let chatTime = document.createElement("label");
 	if (thisUserSent) {
 		chatTime.setAttribute(
 			"style",
@@ -134,7 +133,7 @@ socket.on("user-chat", (data) => {
 	}
 	chatTime.textContent = `${data.time} `;
 
-	var chatItem = document.createElement("div");
+	let chatItem = document.createElement("div");
 	if (thisUserSent) {
 		chatItem.setAttribute(
 			"style",
@@ -148,7 +147,7 @@ socket.on("user-chat", (data) => {
 	chatItem.appendChild(chatTime);
 	messages.appendChild(document.createElement("br"));
 	messages.appendChild(chatItem);
-	var elem = document.getElementById("messages");
+	let elem = document.getElementById("messages");
 	elem.scrollTop = elem.scrollHeight - elem.clientHeight;
 });
 

@@ -100,3 +100,8 @@ io.on("connection", (socket) => {
 server.listen(3000, () => {
 	console.log("Server listening on port 3000");
 });
+
+const bruh = {
+	name: "Bruh",
+	message: "Bruh",
+};
